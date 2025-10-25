@@ -1,0 +1,31 @@
+﻿@model LTWeb_Bai02.Models.SACH
+
+@{
+    ViewBag.Title = "Chi tiết sách";
+}
+
+<h2>THÔNG TIN CHI TIẾT SÁCH</h2>
+
+<div class="card" style="width: 40rem;">
+    <div class="card-body">
+        <p><strong>Tên sách: </strong>@Model.TenSach</p>
+        <p><strong>Giá bán: </strong> @String.Format("{0:N0} ₫", Model.GiaBan)</p>
+        <p><strong>Mô tả: </strong> @Model.MoTa</p>
+        <div>
+            <strong>Ảnh bìa: </strong>
+            @if (!string.IsNullOrEmpty(Model.AnhBia))
+            {
+                <img src="@Url.Content(Model.AnhBia)" alt="Sách" width="150" height="150" />
+            }
+            else
+            {
+                <p>Không có ảnh</p>
+            }
+        </div>
+        <p><strong>Ngày cập nhật: </strong> @Model.NgayCapNhat</p>
+        <p><strong>Số lượng tồn: </strong> @Model.SoLuongTon</p>
+        <p><strong>Chủ đề: </strong> @Model.CHUDE.TenChuDe</p>
+        <p><strong>Chủ đề: </strong> @Model.NHAXUATBAN.TenNXB</p>
+            @Html.ActionLink("Quay lại danh sách", "DMSach", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>

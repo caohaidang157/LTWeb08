@@ -1,0 +1,68 @@
+﻿@model LTWeb_Bai02.Models.SACH
+
+@{
+    ViewBag.Title = "Thêm Sách Mới";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white"> <h4 class="mb-0">Thêm Sách Mới</h4> </div>
+        <div class="card-body">
+            @using (Html.BeginForm("ThemSach", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Mã sách:</label>
+                    @Html.TextBoxFor(m => m.MaSach, new { @class = "form-control", placeholder = "Nhập mã sách..." })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Tên sách:</label>
+                    @Html.TextBoxFor(m => m.TenSach, new { @class = "form-control", placeholder = "Nhập tên sách..." })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Giá bán:</label>
+                    @Html.TextBoxFor(m => m.GiaBan, new { @class = "form-control", type = "number", placeholder = "Nhập giá bán..." })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Mô tả:</label>
+                    @Html.TextAreaFor(m => m.MoTa, new { @class = "form-control", rows = "4", placeholder = "Nhập mô tả ngắn gọn..." })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Ảnh:</label>
+                    <input type="file" name="Image" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Ngày cập nhật:</label>
+                    @Html.TextBoxFor(m => m.NgayCapNhat, new { @class = "form-control", type = "date" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Số lượng tồn:</label>
+                    @Html.TextBoxFor(m => m.SoLuongTon, new { @class = "form-control", type = "number", placeholder = "Nhập số lượng tồn..." })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Chủ đề:</label>
+                    @Html.DropDownList("MaCD", null, "-- Chọn chủ đề --", new { @class = "form-select" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Nhà xuất bản:</label>
+                    @Html.DropDownList("MaNXB", null, "-- Chọn nhà xuất bản --", new { @class = "form-select" })
+                </div>
+
+                <div class="text-end">
+                    <input type="submit" value="Lưu Sách" class="btn btn-success px-4" />
+                    @Html.ActionLink("Quay lại", "DMSach", null, new { @class = "btn btn-secondary ms-2" })
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
