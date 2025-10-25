@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Danh sách nhân viên theo phòng ban";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Action("DepartmentList", "Home")
+        </div>   
+        <div class="col-md-9">
+            @Html.Action("Index", "Home")
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f4f6f9;
+    }
+
+    h4 {
+        margin-bottom: 15px;
+    }
+</style>

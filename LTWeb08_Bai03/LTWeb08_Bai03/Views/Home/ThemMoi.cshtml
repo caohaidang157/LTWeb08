@@ -1,0 +1,48 @@
+﻿@model LTWeb08_Bai03.Models.Employee
+@{
+    ViewBag.Title = "ThemMoi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="/Home/Create" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div>Mã nhân viên</div>
+        <div>
+            @Html.EditorFor(model => model.Id)
+            @Html.ValidationMessageFor(model => model.Id)
+        </div>
+        <div>Tên nhân viên</div>
+        <div>
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div>Giới tính</div>
+        <div>
+            @Html.DropDownListFor(model => model.Gender, (IEnumerable<SelectListItem>)ViewBag.GenderList, "--Chọn giới tính--")
+            @Html.ValidationMessageFor(model => model.Id)
+        </div>
+        <div>Thành phố</div>
+        <div>
+            @Html.EditorFor(model => model.City)
+            @Html.ValidationMessageFor(model => model.City)
+        </div>
+        <div>Mã phòng ban</div>
+        <div>
+            @Html.DropDownListFor(model => model.DeptId, (SelectList)ViewBag.DeptId, "--Chọn phòng ban--")
+            @Html.ValidationMessageFor(model => model.Id)
+        </div>
+        <div>Ảnh</div>
+        <div>
+            <input type="file" name="ImageFile" id="ImageFile" />
+        </div>
+        <p>
+            <input type="submit" name="name" value="Create" class="btn btn-primary" />
+        </p>
+    </fieldset>
+</form>
+<div>
+    @Html.ActionLink("Back to list", "Index")
+</div>
+

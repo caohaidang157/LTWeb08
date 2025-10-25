@@ -1,0 +1,58 @@
+﻿@model List<LTWeb08_Bai03.Models.Department>
+
+@{
+    Layout = null; 
+}
+
+<div class="sidebar">
+    <h4>📋 Danh sách phòng ban</h4>
+    <ul class="dept-list">
+        @foreach (var dept in Model)
+        {
+            <li>
+                <a href="@Url.Action("DanhSachNhanVienTheoPhongBan", "Home", new { id = dept.DeptId })">
+                    @dept.Name
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+
+<style>
+    .sidebar {
+        background-color: #f8f9fa;
+        border-right: 1px solid #ddd;
+        padding: 15px;
+        height: calc(100vh - 100px);
+        overflow-y: auto;
+    }
+
+        .sidebar h4 {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+    .dept-list {
+        list-style: none;
+        padding-left: 0;
+    }
+
+        .dept-list li {
+            margin: 8px 0;
+        }
+
+            .dept-list li a {
+                display: block;
+                text-decoration: none;
+                padding: 8px 10px;
+                border-radius: 5px;
+                color: #333;
+                transition: all 0.2s ease;
+            }
+
+                .dept-list li a:hover {
+                    background-color: #007bff;
+                    color: white;
+                }
+</style>

@@ -1,0 +1,22 @@
+﻿@model LTWeb08_Bai03.Models.Employee
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin chi tiết</h2>
+<div style="display:flex">
+    <div>
+        <img src="~/Content/images/1.jpg" alt="Alternate Text" width="150" height="150" style="object-fit: cover; border-radius: 5px;"/>
+        <p>Mã nhân viên: @Model.Id </p>
+    </div>
+    <div>
+        <p>Họ tên: @Model.Name</p>
+        <p>Giới tính: @Model.Gender</p>
+        <p>Thành phố: @Model.City</p>
+        <p>Mã phòng ban: @Model.DeptId</p>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to list","Index")
+</div>
+

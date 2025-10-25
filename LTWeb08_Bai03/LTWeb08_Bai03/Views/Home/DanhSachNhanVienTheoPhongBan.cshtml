@@ -1,0 +1,45 @@
+﻿@model List<LTWeb08_Bai03.Models.Employee>
+@{
+    ViewBag.Title = "DanhSachNhanVienTheoPhongBan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<table>
+    <tr>
+        <th>Mã nhân viên</th>
+        <th>Tên nhân viên</th>
+        <th>Giới tính</th>
+        <th>Thành phố</th>
+        <th>Ảnh</th>
+        <th></th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                <td>@Html.DisplayFor(modelItem => item.City)</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImagePath))
+                    {
+                        <img src="@Url.Content(item.ImagePath)" alt="@item.Name" width="50" height="50" style="object-fit: cover; border-radius: 5px;" />
+                    }
+                    else
+                    {
+                        <img src="@Url.Content("~/Content/images/default.png")" alt="No Photo" width="50" height="50" style="object-fit: cover; border-radius: 5px;" />
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.Id })
+                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.Id })
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    @Html.ActionLink("Back to list","Idex")
+</div>
+

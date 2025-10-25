@@ -1,0 +1,63 @@
+﻿@model List<LTWeb08_Bai03.Models.Employee>
+
+@{
+    Layout = null;
+}
+<p>@Html.ActionLink("Thêm mới nhân viên","ThemMoi")</p>
+<div class="employee-section">
+    <h4>👨‍💼 Danh sách nhân viên</h4>
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Mã NV</th>
+                <th>Họ tên</th>
+                <th>Giới tính</th>
+                <th>Thành phố</th>
+                <th>Ảnh</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Gender</td>
+                    <td>@item.City</td>
+                    <td>
+                        <img src="@Url.Content(item.ImagePath ?? "~/Content/images/default.png")"
+                             width="50" height="50"
+                             style="object-fit: cover; border-radius: 5px;" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("✏️ Sửa", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("🔍 Chi tiết", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("🗑️ Xóa", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .employee-section {
+        padding: 15px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    th {
+        background-color: #343a40;
+        color: white;
+    }
+</style>
