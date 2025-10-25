@@ -1,0 +1,31 @@
+﻿@model List<LTWeb_Bai01.Models.Theloaitin>
+
+@{
+    ViewBag.Title = "Danh sách thể loại";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách thể loại</h2>
+
+<p>@Html.ActionLink("Thêm thể loại mới", "ThemMoi")</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+        <th>ID</th>
+        <th>Tên thể loại</th>
+        <th>Thao tác</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.IDLoai</td>
+            <td>@item.Tentheloai</td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.IDLoai }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.IDLoai }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.IDLoai })
+            </td>
+        </tr>
+    }
+</table>

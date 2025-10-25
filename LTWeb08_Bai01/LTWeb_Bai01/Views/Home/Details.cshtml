@@ -1,0 +1,17 @@
+﻿@model LTWeb_Bai01.Models.Theloaitin
+
+@{
+    ViewBag.Title = "Chi tiết thể loại";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết thể loại</h2>
+
+<p>ID Loai tin: @Model.IDLoai</p>
+<p>Ten Loai tin: @Model.Tentheloai</p>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDLoai }) |
+    @Html.ActionLink("Details", "Details", new { id = Model.IDLoai }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.IDLoai })
+</p>
